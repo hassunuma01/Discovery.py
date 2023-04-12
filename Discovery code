@@ -1,0 +1,18 @@
+import requests
+import pyfiglet
+import time
+
+banner = pyfiglet.figlet_format("!D1SCOVERY!")
+print(banner)
+
+time.sleep(2)
+
+site = input('Site: ')
+wordlist = input('wordlist: ')
+
+arquivo = open(wordlist)
+
+
+for d in arquivo.readlines():
+    requisicao = requests.get(site+"/"+d.replace('\n', ''))
+    print(requisicao.url+"[-->]"+str(requisicao.status_code))  
